@@ -1,0 +1,22 @@
+{
+  "name": "node-red-contrib-ddate",
+  "version": "0.1.0",
+  "description": "Calculate the discordian date from a given input date.",
+  "main": "ddate/ddate.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node-red",
+    "ddate",
+    "discordian",
+    "calendar"
+  ],
+  "node-red": {
+    "nodes": {
+      "ddate": "ddate/ddate.js"
+    }
+  },
+  "author": "Markus Mehrwald (brainbugfix)",
+  "license": "MIT"
+}

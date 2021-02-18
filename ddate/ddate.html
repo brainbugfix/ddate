@@ -1,0 +1,50 @@
+<script type="text/javascript">
+  RED.nodes.registerType('ddate',
+  {
+      category: 'function',
+      color: '#BFFF00',
+      defaults: {
+        name: {value:""}
+      },
+      inputs:1,
+      outputs:1,
+      icon: "font-awesome/fa-calendar",
+      label: function() {
+          return this.name || "ddate";
+      }
+  });
+</script>
+
+<script type="text/html" data-template-name="ddate">
+</script>
+
+<script type="text/html" data-help-name="ddate">
+<p>A node to convert a Gregorian date to Discordian date.</p>
+
+<h3>Inputs</h3>
+<dl class="message-properties">
+  <dt>payload
+    <span class="property-type">number | string</span>
+  </dt>
+  <dd> The timestamp (Unix time in ms) which shall be converted. If the  </dd>
+</dl>
+
+<h3>Outputs</h3>
+<dl class="message-properties">
+  <dt>payload
+    <span class="property-type">string</span>
+  </dt>
+  <dd> The current discordian date as string. </dd>
+</dl>
+
+<h3>Details</h3>
+<p>Converts a given date into discordian date. If the input is empty, the current date is taken to convert.</p>
+
+<h3>References</h3>
+<ul>
+    <li><a href="https://rosettacode.org/wiki/Discordian_date#JavaScript">Rosetta Code</a> - the actual code comes from here. I just made a node out of it.</li>
+    <li><a>GitHub</a> - the nodes github repository.</li>
+</ul>
+</script>
+
+
