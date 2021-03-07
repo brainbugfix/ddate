@@ -26,7 +26,7 @@
   <dt>payload
     <span class="property-type">number | string</span>
   </dt>
-  <dd> The timestamp (Unix time in ms) which shall be converted. If the  </dd>
+  <dd> The timestamp (Unix time in ms) which shall be converted. If the given payload is not a valid number which can be converted, the current date is used. </dd>
 </dl>
 
 <h3>Outputs</h3>
@@ -35,6 +35,24 @@
     <span class="property-type">string</span>
   </dt>
   <dd> The current discordian date as string. </dd>
+  <dt>date
+    <span class="property-type">object</span>
+  </dt>
+  <dd> <code>
+    {<br/>
+      strDate: </code>The date as string. This is the same as the payload.<br/><code>
+      day: </code>The day of the month as number, starting with 1.<br/><code>
+      dayOfWeek: </code>The day of the week as number, starting with 0.<br/><code>
+      strDayOfWeek: </code>The name of the day as string.<br/><code>
+      season: </code>The season as number, starting with 0.<br/><code>
+      strSeason: </code>The name of the season as string.<br/><code>
+      yold: </code>The YOLD as number.<br/><code>
+      isHoliday: </code>Indicating whether to celebrate holiday or not as boolean.<br/><code>
+    }</code>. </dd>
+  <dt>input
+    <span class="property-type">number</span>
+  </dt>
+  <dd> The value used for conversion. If an input was given, this is the copy of it. If the input was <code>null</code> or empty, this values contains the timestamp which was used for conversion which is <code>Date.now()</code> at the time of conversion. </dd>
 </dl>
 
 <h3>Details</h3>
