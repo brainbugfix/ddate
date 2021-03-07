@@ -79,6 +79,7 @@ module.exports = function(RED)
     var divDay = Math.floor(dayOfYear / 73);
   
     var seasonDay = (dayOfYear % 73) + 1;
+    var isHoliday = (seasonDay == 5 || seasonDay == 50 || (date.isLeapYear() && dayOfYear == 59)); // day is 60 but was reduced by 1 above
     if( seasonDay == 5 ) {
       celebrateHoliday = apostle[divDay];
     }
@@ -92,15 +93,23 @@ module.exports = function(RED)
     var nth = (seasonDay % 10 == 1 && seasonDay != 11) ? 'st'
             : (seasonDay % 10 == 2 && seasonDay != 12) ? 'nd'
             : (seasonDay % 10 == 3 && seasonDay != 13) ? 'rd'
-                                    : 'th';
+                                                       : 'th';
   
-    return "" //(date.isToday() ? "Today is " : '')
-          + dayOfWeek
-          + ", the " + seasonDay + nth
-          + " day of " + season
-          + " in the YOLD " + yold
-          + (celebrateHoliday ? ". Celebrate " + celebrateHoliday + "!" : '')
-      ;
+    return {
+      strDate:      "" 
+                    + dayOfWeek
+                    + ", the " + seasonDay + nth
+                    + " day of " + season
+                    + " in the YOLD " + yold
+                    + (celebrateHoliday ? ". Celebrate " + celebrateHoliday + "!" : ''),
+      day:          seasonDay,
+      dayOfWeek:    (dayOfYear % 5),
+      strDayOfWeek: dayOfWeek,
+      season:       divDay,
+      strSeason:    season,
+      yold:         yold,
+      isHoliday:    isHoliday,
+    };
   }
  
   function DdateNode(config) 
@@ -114,10 +123,14 @@ module.exports = function(RED)
         timestamp = parseInt(msg.payload);
       else
         timestamp = msg.payload;
+      var d;
       if (isNaN(timestamp))
-        msg.payload = discordianDate(new Date(Date.now()));
-      else
-        msg.payload = discordianDate(new Date(timestamp));
+        timestamp = Date.now();
+      d = discordianDate(new Date(timestamp));
+      
+      msg.payload = d.strDate;
+      msg.date = d;
+      msg.input = timestamp;
 
       if (done) 
         done();
