@@ -109,6 +109,8 @@ module.exports = function(RED)
       strSeason:    season,
       yold:         yold,
       isHoliday:    isHoliday,
+      // use spread operator to dynamically add holiday string
+      ...(isHoliday && {strHoliday:  celebrateHoliday}),
     };
   }
  

@@ -10,11 +10,15 @@ Converts a given timestamp into a discordian date representation. The timestamp 
   "season":0,
   "strSeason":"Chaos",
   "yold":3186,
-  "isHoliday":true
+  "isHoliday":true,
+  "strHoliday":"St. Tib's Day!"
 }
 ```
 `season` and `dayofWeek` both start at 0.
+`strHoliday` is only present if it is actually a holiday.
 
 `msg.input` contains the original timestampe used for conversion.
 
 The code for conversion comes from [Rosetta Code](https://rosettacode.org/wiki/Discordian_date#JavaScript). Except of a few minor changes, all credits belong to the original author.
+
+**Hail Eris! All Hail Discordia!**
